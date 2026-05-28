@@ -18,7 +18,7 @@ Front-end web construído com **Next.js** + **TypeScript**.
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/web.git
+git clone https://github.com/NanaAlex/web.git
 cd web
 
 # Instale as dependências
