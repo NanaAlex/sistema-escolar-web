@@ -18,7 +18,7 @@ Front-end web construído com **Next.js** + **TypeScript**.
 
 ```bash
 # Clone o repositório
-git clone https://github.com/NanaAlex/web.git
+git clone https://github.com/NanaAlex/sistema-escolar-web.git
 cd web
 
 # Instale as dependências
@@ -55,3 +55,34 @@ src/
 | Variável              | Descrição         | Padrão                  |
 |-----------------------|-------------------|-------------------------|
 | NEXT_PUBLIC_API_URL   | URL da API back   | http://localhost:3333   |
+
+---
+
+## 🔧 Solução de problemas no Git
+
+### Erro ao fazer `git push` (rejected)
+
+Acontece quando o repositório no GitHub já tem arquivos (ex: README criado pelo GitHub).
+
+```bash
+git pull origin main --allow-unrelated-histories
+# Vai abrir o editor Vim — digite :wq e pressione Enter para sair ou ctrl + c
+git push -u origin nome_da_branch
+```
+
+### Subir alterações do zero novamente
+
+```bash
+git add .
+git commit -m "sua mensagem aqui"
+git push
+```
+
+### Se o push rejeitar de novo
+
+```bash
+git pull origin main --allow-unrelated-histories
+git add .
+git commit -m "sua mensagem aqui"
+git push
+```
