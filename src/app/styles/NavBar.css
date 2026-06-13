@@ -1,0 +1,86 @@
+:root {
+    --clr: #222327;
+}
+
+.barraPrincipal ul,
+.barraSecundaria ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    justify-content: space-evenly;
+}
+
+.barraPrincipal ul {
+    position: relative;
+}
+
+.barraPrincipal ul li,
+.barraSecundaria ul li {
+    width: 70px;
+    height: 70px;
+
+    flex: 0 0 70px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    z-index: 2;
+}
+
+.barraPrincipal ul li a,
+.barraSecundaria ul li a {
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+}
+
+.icon {
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: transform 0.5s ease;
+}
+
+.barraPrincipal ul li.active a .icon {
+    transform: translateX(37.5px);
+}
+
+.indicator {
+    position: absolute;
+
+    width: 90px;
+    height: 90px;
+
+    left: 100%;
+
+    background: #5EBBE6;
+    border-radius: 50%;
+    border: 6px solid white;
+    box-sizing: border-box;
+
+    transform: translateX(-50%);
+
+    transition: top 0.5s ease;
+
+    z-index: 1;
+    pointer-events: none;
+}
