@@ -1,9 +1,41 @@
+'use client';
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import seta from './assets/images/seta.png';
 import hominho from './assets/images/hominhoLogin.png';
 import BotaoAnimado from './components/botaoAnimado';
 
 export default function Home() {
+  const router = useRouter();
+  const [login, setLogin] = useState('');
+  const [senha, setSenha] = useState('');
+  const [erro, setErro]   = useState('');
+
+  async function handleLogin() {
+    setErro('');
+
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ login, senha }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setErro(data.error || 'Erro ao fazer login');
+        return;
+      }
+
+      router.push('/menu');
+    } catch (error) {
+      setErro('Erro ao conectar com o servidor');
+    }
+  }
+
   return (
     <main>
       <div className="bg-[url('./assets/images/imagemFundoLogin.png')] bg-cover bg-center w-full h-screen">
@@ -16,7 +48,7 @@ export default function Home() {
 
             <div className="flex align-center h-90/100 w-full p-8">
               <Image src={hominho} alt="Hominho" className="z-10 w-60/100" />
-              
+
               <div className="flex items-center justify-end-safe h-full w-full z-9">
                 <div className="flex bg-[#FBFBFB] rounded-2xl p-8 h-full w-50/100 flex-col">
                   <h1 className="text-2xl font-bold self-center p-10">Login</h1>
@@ -24,13 +56,29 @@ export default function Home() {
                   <div className="flex h-full w-full font-bold flex-col p-8">
                     <div className="flex w-full flex-col">
                       <label>Usuário</label>
-                      <input type="text" className="border-b-2 focus:outline-none focus:ring-0" placeholder="usuario@gmail.com"/>
+                      <input
+                        type="text"
+                        className="border-b-2 focus:outline-none focus:ring-0"
+                        placeholder="usuario@gmail.com"
+                        value={login}
+                        onChange={(e) => setLogin(e.target.value)}
+                      />
                     </div>
 
                     <div className="flex w-full flex-col mt-8">
                       <label>Senha</label>
-                      <input type="password" className="border-b-2 focus:outline-none focus:ring-0" placeholder="12345678"/>
+                      <input
+                        type="password"
+                        className="border-b-2 focus:outline-none focus:ring-0"
+                        placeholder="12345678"
+                        value={senha}
+                        onChange={(e) => setSenha(e.target.value)}
+                      />
                     </div>
+
+                    {erro && (
+                      <p className="text-red-500 text-sm mt-2">{erro}</p>
+                    )}
 
                     <div className="flex w-full mt-4 justify-between">
                       <div>
@@ -41,7 +89,7 @@ export default function Home() {
                       <a href="#" className="text-sm self-center text-[#616467] hover:underline">Esqueci minha senha</a>
                     </div>
 
-                    <BotaoAnimado texto="Entrar" className="self-center p-6 mt-16 w-60/100"/>
+                    <BotaoAnimado texto="Entrar" className="self-center p-6 mt-16 w-60/100" onClick={handleLogin} />
                   </div>
 
                   <div className="absolute right-30/100 bottom-2/100 z-30">

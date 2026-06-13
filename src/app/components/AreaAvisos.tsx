@@ -31,7 +31,7 @@ export default function AreaAvisos() {
         <div style={styles.container}>
                 <div style={styles.listaAvisos}>
                     <div style={styles.tituloAvisosImportantes}>
-                        <p style={{fontSize:45}}>Avisos Importantes</p>
+                        <p style={{fontSize: 'clamp(20px, 3vw, 45px)'}}>Avisos Importantes</p>
                     </div>
 
                     <div style={styles.areaCarrossel}>
@@ -102,12 +102,12 @@ export default function AreaAvisos() {
 }
 
 const styles = {
+    // Novo: display flex column + gap, ocupa 100% do AreaConteudo
     container: {
         width: '100%',
+        height: '100%',
         boxSizing: 'border-box' as const,
 
-        backdropFilter: 'blur(25px)',
-        WebkitBackdropFilter: 'blur(25px)',
         border: '1px solid rgba(255, 255, 255, 0.77)',
         borderRadius: 30,
         padding: 20,
@@ -116,18 +116,22 @@ const styles = {
         boxShadow:
             '0 8px 32px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.4)',
 
+        display: 'flex',
+        flexDirection: 'column' as const,
+        gap: '2%',
+        minHeight: 0,
         overflow: 'hidden',
-        marginBottom:'1%',
     },
 
+    // height:'40vh' + marginBottom -> flex: '1 1 58%' (proporcional)
+    // flex: '1 1 58%' -> '1 1 52%' (um pouco menor, sobra espaço pra Notificações)
     listaAvisos: {
         display: 'flex',
         flexDirection: 'column' as const,
         width: '100%',
-        height: '40vh',
+        flex: '1 1 52%',
+        minHeight: 0,
         backgroundColor: '#8CDAEF',
-        backdropFilter: 'blur(25px)',
-        WebkitBackdropFilter: 'blur(25px)',
         border: '1px solid rgba(255, 255, 255, 0.77)',
         borderRadius: 30,
         overflow: 'hidden',
@@ -164,48 +168,56 @@ const styles = {
         alignItems: 'center',
     },
 
+    // Removido backdropFilter/WebkitBackdropFilter (blur) deste card.
+    // Estava sendo aplicado em 5 cards ao mesmo tempo + nos containers pais,
+    // causando travamento de renderização ("tela pesada").
+    // Aumentei a opacidade do background (0.22 -> 0.35) para compensar visualmente.
     aviso: {
-        flex: '0 0 calc((100% - 30px) / 3)',
-        minWidth: 'calc((100% - 30px) / 3)',
+    flex: '0 0 calc((100% - 30px) / 3)',
+    minWidth: 'calc((100% - 30px) / 3)',
 
-        height: '90%',
-        minHeight: '170px',
+    height: '90%',
+    minHeight: '170px',
 
-        backdropFilter: 'blur(18px)',
-        WebkitBackdropFilter: 'blur(18px)',
-        background: 'rgba(255,255,255,0.22)',
-        border: '1px solid rgba(255,255,255,0.35)',
-        borderRadius: 20,
-        padding: 16,
-        cursor: 'pointer',
-        transition: 'all .25s ease',
-        boxShadow:
-            '0 4px 20px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.4)',
+    background: 'rgba(255,255,255,0.35)',
+    border: '1px solid rgba(255,255,255,0.35)',
+    borderRadius: 20,
+    padding: 16,
+    cursor: 'pointer',
+    transition: 'all .25s ease',
+    boxShadow:
+        '0 4px 20px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.4)',
 
-        display: 'flex',
-        flexDirection: 'column' as const,
-        justifyContent: 'space-between',
-        zIndex: 1000,
-        position: 'relative' as const,
-    },
+    display: 'flex',
+    flexDirection: 'column' as const,
+    justifyContent: 'flex-start',  // era 'space-between' — causava o espaço vazio gigante
+    gap: 12,                       // adiciona espaçamento controlado entre título e texto
+    zIndex: 1000,
+    position: 'relative' as const,
+},
     
+    //fontSize fixo (28px) -> clamp
     titulo: {
         fontWeight: 600,
-        fontSize: 28,
+        fontSize: 'clamp(16px, 2vw, 28px)',
         marginTop:17,
         marginLeft:5
     },
 
+    //fontSize fixo (18px) -> clamp
     conteudo: {
-        fontSize: 18,
+        fontSize: 'clamp(12px, 1.2vw, 18px)',
         opacity: 0.85,
         lineHeight: 1.5,
         marginLeft:5,
         marginRight:5
     },
-    tresPontinhos:{
-        marginLeft:'90%'
-    },
+
+    tresPontinhos: {
+    position: 'absolute' as const,  //era 'marginLeft: 90%' — agora fica fixo no canto
+    bottom: 16,
+    right: 16,
+},
 
     tituloAvisosImportantes:{
         marginTop:'1.5%',
