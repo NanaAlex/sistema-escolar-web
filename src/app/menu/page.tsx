@@ -1,4 +1,4 @@
-import TelaBranca from "./components/TelaBranca"
+import TelaBranca from "../components/TelaBranca"
 
 
 export default function telaInicial() {

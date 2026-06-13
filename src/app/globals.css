@@ -1,5 +1,29 @@
-@import 'tailwindcss';
+@import url('https://fonts.cdnfonts.com/css/google-sans');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
-  font-family: sans-serif;
+  font-family: 'Google Sans', sans-serif;
+}
+
+.sem-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.sem-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.cardHover {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cardHover:hover {
+  transform: scale(1.01) translateY(-4px);
+  z-index: 10s;
 }
