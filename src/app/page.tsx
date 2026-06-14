@@ -9,42 +9,49 @@ import BotaoAnimado from './components/botaoAnimado';
 
 export default function Home() {
   const router = useRouter();
-
   const [login, setLogin] = useState('');
   const [senha, setSenha] = useState('');
+  const [erro, setErro]   = useState('');
 
   async function handleLogin() {
-    // Modo de teste: entra sem validar login e senha
-    router.push('/menu');
+    setErro('');
+
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ login, senha }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setErro(data.error || 'Erro ao fazer login');
+        return;
+      }
+
+      router.push('/menu');
+    } catch (error) {
+      setErro('Erro ao conectar com o servidor');
+    }
   }
 
   return (
     <main>
       <div className="bg-[url('./assets/images/imagemFundoLogin.png')] bg-cover bg-center w-full h-screen">
         <div className="flex items-center justify-center h-full">
+
           <div className="static bg-white/10 backdrop-blur-md border border-white/20 rounded-4xl shadow-lg p-8 h-90/100 w-90/100">
             <div className="absolute top-0 right-0 z-30">
-              <Image
-                src={seta}
-                height={120}
-                width={120}
-                alt="Seta"
-                className="invert transform rotate-45 z-30 translate-x-1/6 -translate-y-1/6"
-              />
+              <Image src={seta} height={120} width={120} alt="Seta" className="invert transform rotate-45 z-30 translate-x-1/6 -translate-y-1/6" />
             </div>
 
             <div className="flex align-center h-90/100 w-full p-8">
-              <Image
-                src={hominho}
-                alt="Hominho"
-                className="z-10 w-60/100"
-              />
+              <Image src={hominho} alt="Hominho" className="z-10 w-60/100" />
 
               <div className="flex items-center justify-end-safe h-full w-full z-9">
                 <div className="flex bg-[#FBFBFB] rounded-2xl p-8 h-full w-50/100 flex-col">
-                  <h1 className="text-2xl font-bold self-center p-10">
-                    Login
-                  </h1>
+                  <h1 className="text-2xl font-bold self-center p-10">Login</h1>
 
                   <div className="flex h-full w-full font-bold flex-col p-8">
                     <div className="flex w-full flex-col">
@@ -69,41 +76,24 @@ export default function Home() {
                       />
                     </div>
 
+                    {erro && (
+                      <p className="text-red-500 text-sm mt-2">{erro}</p>
+                    )}
+
                     <div className="flex w-full mt-4 justify-between">
                       <div>
-                        <input
-                          type="checkbox"
-                          className="accent-black"
-                          name="Lembre-se de mim"
-                        />
-                        <label className="ml-2 text-sm text-center">
-                          Lembre-se de mim
-                        </label>
+                        <input type="checkbox" className="accent-black" name="Lembre-se de mim" />
+                        <label className="ml-2 text-sm text-center">Lembre-se de mim</label>
                       </div>
 
-                      <a
-                        href="#"
-                        className="text-sm self-center text-[#616467] hover:underline"
-                      >
-                        Esqueci minha senha
-                      </a>
+                      <a href="#" className="text-sm self-center text-[#616467] hover:underline">Esqueci minha senha</a>
                     </div>
 
-                    <BotaoAnimado
-                      texto="Entrar"
-                      className="self-center p-6 mt-16 w-60/100"
-                      onClick={handleLogin}
-                    />
+                    <BotaoAnimado texto="Entrar" className="self-center p-6 mt-16 w-60/100" onClick={handleLogin} />
                   </div>
 
                   <div className="absolute right-30/100 bottom-2/100 z-30">
-                    <Image
-                      src={seta}
-                      height={120}
-                      width={120}
-                      alt="Seta"
-                      className="invert transform -rotate-135 -translate-x-1/8 -translate-y-1/4 z-30"
-                    />
+                    <Image src={seta} height={120} width={120} alt="Seta" className="invert transform -rotate-135 -translate-x-1/8 -translate-y-1/4 z-30" />
                   </div>
                 </div>
               </div>
