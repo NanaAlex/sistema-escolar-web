@@ -84,3 +84,70 @@
     z-index: 1;
     pointer-events: none;
 }
+
+.barraPrincipal ul,
+.barraSecundaria ul {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.barraPrincipal ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 2;
+}
+
+.barraSecundaria ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 2;
+}
+
+.list {
+  width: 70px;
+  height: 70px;
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.botaoNav {
+  width: 70px;
+  height: 70px;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.indicator {
+  position: absolute;
+  left: 50%;
+  width: 90px;
+  height: 90px;
+  background-color: #24aee4;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  transition: top 0.25s ease;
+  z-index: 1;
+}
