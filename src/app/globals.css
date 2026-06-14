@@ -29,3 +29,19 @@ body {
   transform: scale(1.01) translateY(-4px);
   z-index: 10s;
 }
+
+/* Estilos para o botão - não afeta nenhum campo do card */
+.botao-confirmar-custom {
+  width: 260px;
+  height: 52px;
+  background-color: #25c4a8;
+  border: none;
+  border-radius: 1000px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 2px 3px rgba(0,0,0,0.15);
+}
+

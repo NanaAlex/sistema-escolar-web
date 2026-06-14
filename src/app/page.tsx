@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import seta from './assets/images/seta.png';
 import hominho from './assets/images/hominhoLogin.png';
-import BotaoAnimado from './components/botaoAnimado';
+import BotaoAnimado from '../components/botaoAnimado';
 
 export default function Home() {
   const router = useRouter();
