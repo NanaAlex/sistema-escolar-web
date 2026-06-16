@@ -53,7 +53,7 @@ export default function Home() {
                 <div className="flex bg-[#FBFBFB] rounded-2xl p-8 h-full w-50/100 flex-col">
                   <h1 className="text-2xl font-bold self-center p-10">Login</h1>
 
-                  <div className="flex h-full w-full font-bold flex-col p-8">
+                  <div className="flex h-full w-full font-bold flex-col p-8 mt-18">
                     <div className="flex w-full flex-col">
                       <label>Usuário</label>
                       <input
