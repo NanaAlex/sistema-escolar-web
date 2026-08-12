@@ -1,0 +1,88 @@
+.container {
+  width: 15%;
+  min-height: 90vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding-top: 0.5%;
+  padding-bottom: 0.5%;
+}
+
+
+.barraSuperior {
+  background-color: #001C33;
+  width: 90%;
+  min-height: 48vh;
+
+  margin-left: 5%;
+  border-radius: 30px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.barraInferior {
+  background-color: #001C33;
+  width: 90%;
+  min-height: 20vh;
+
+  margin-left: 5%;
+  border-radius: 30px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.itemBarraDePesquisa {
+  width: 90%;
+  min-height: 6vh;
+
+  margin-top: 5%;
+  margin-bottom: 5%;
+
+  display: flex;
+  align-items: center;
+
+  border-radius: 100px;
+
+  color: white;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+
+.iconeItemBarraDePesquisa {
+  margin-left: 22px;
+
+  display: flex;
+  align-items: center;
+}
+
+
+.nomeItemBarraDePesquisa {
+  margin-left: 22px;
+
+  color: inherit;
+
+  font-size: 18px;
+}
+
+.itemSelecionado {
+  background-color: white;
+  color: #001C33;
+}
+
+.itemSair {
+  background-color: #D70000;
+  color: white;
+}
