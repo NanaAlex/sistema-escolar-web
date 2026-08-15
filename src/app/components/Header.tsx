@@ -16,7 +16,7 @@ export default function Header(){
 
             <div className={styles.iconePerfilHeader}>
                 <CircleUserRound
-                    size={84}
+                    size={64}
                     color="white"
                     strokeWidth={2}
                 />
