@@ -1,11 +1,9 @@
 .container {
   width: 100%;
   height: 100%;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   padding-top: 2%;
   padding-bottom: 2%;
 }
@@ -14,11 +12,9 @@
 .barraSuperior {
   background-color: #001C33;
   width: 90%;
-  min-height: 48.5vh;
-
+  min-height: 46vh;
   margin-left: 5%;
   border-radius: 30px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,10 +26,8 @@
   background-color: #001C33;
   width: 90%;
   min-height: 20vh;
-
   margin-left: 5%;
   border-radius: 30px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,39 +35,30 @@
 }
 
 
-.itemBarraDePesquisa {
+.itemBarraLateral {
   width: 90%;
   min-height: 6vh;
-
   margin-top: 5%;
   margin-bottom: 5%;
-
   display: flex;
   align-items: center;
-
   border-radius: 100px;
-
   color: white;
-
   cursor: pointer;
-
   transition: 0.2s;
 }
 
 
-.iconeItemBarraDePesquisa {
+.iconeItemBarraLateral {
   margin-left: 22px;
-
   display: flex;
   align-items: center;
 }
 
 
-.nomeItemBarraDePesquisa {
+.nomeItemBarraLateral {
   margin-left: 22px;
-
   color: inherit;
-
   font-size: 18px;
 }
 

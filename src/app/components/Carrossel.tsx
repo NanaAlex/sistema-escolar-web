@@ -68,11 +68,11 @@ export default function Carrossel() {
       }}
     >
 
-      {/* SOMBRA */}
+      {/* Sombra azul no carrosel*/}
       <div className={styles.sombra}></div>
 
 
-      {/* SETA ESQUERDA */}
+      {/* SETA DA ESQUERDA */}
       <button
         className={`${styles.seta} ${styles.setaEsquerda}`}
         onClick={slideAnterior}
@@ -107,7 +107,7 @@ export default function Carrossel() {
       </div>
 
 
-      {/* SETA DIREITA */}
+      {/* SETA DA DIREITA */}
       <button
         className={`${styles.seta} ${styles.setaDireita}`}
         onClick={proximoSlide}

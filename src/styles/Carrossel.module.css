@@ -3,7 +3,7 @@
 
 .container {
   width: 99%;
-  height: 82%;
+  height: 76.5%;
   margin-top: 0.5%;
   border-radius: 25px;
   position: relative;
@@ -13,7 +13,7 @@
   transition: background-image 0.5s ease;
 }
 
-/* SOMBRA ESCURA DA ESQUERDA */
+/* SOMBRA AZUL DA ESQUERDA */
 .sombra {
   position: absolute;
   top: 0;
@@ -28,7 +28,6 @@
   );
 }
 
-/* CONTEÚDO */
 .conteudo {
   position: relative;
   z-index: 2;
@@ -41,7 +40,6 @@
   color: white;
 }
 
-/* ETIQUETA */
 .aviso {
   width: fit-content;
   background-color: #e30613;
@@ -53,47 +51,29 @@
   margin-bottom: 8px;
 }
 
-/* TITULO */
 .titulo {
   margin: 0;
   font-size: 36px;
   font-weight: 700;
   font-family: 'Hind', sans-serif;
-  
   color: white;
 }
-
-/* Restante do seu código continua igual... */
-
-
-/* DESTAQUE */
 
 .destaque {
   margin-top: 8px;
   margin-bottom: 4px;
-
   font-size: 16px;
   font-weight: 700;
-
   color: white;
 }
-
-
-/* DESCRIÇÃO */
 
 .descricao {
   width: 90%;
-
   margin-top: 0;
-
   font-size: 15px;
   line-height: 1.5;
-
   color: white;
 }
-
-
-/* DATA */
 
 .data {
   margin-top: 25px;
@@ -104,64 +84,41 @@
   color: white;
 }
 
-
-/* SETAS */
-
 .seta {
   position: absolute;
-
   top: 50%;
-
   transform: translateY(-50%);
-
   z-index: 5;
-
   background: none;
-
   border: none;
-
   color: white;
-
   cursor: pointer;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 0;
 }
-
 
 .setaEsquerda {
   left: 15px;
 }
 
-
 .setaDireita {
   right: 15px;
 }
-
 
 .seta:hover {
   opacity: 0.7;
 }
 
-
-/* INDICADORES */
-
 .indicadores {
   position: absolute;
-
   bottom: 12px;
   left: 50%;
-
   transform: translateX(-50%);
-
   z-index: 5;
-
   display: flex;
   align-items: center;
-
   gap: 8px;
 }
 
@@ -169,26 +126,18 @@
 .indicador {
   width: 10px;
   height: 10px;
-
   padding: 0;
-
   border: none;
   border-radius: 50%;
-
   background-color: white;
-
   cursor: pointer;
-
   opacity: 0.7;
-
   transition: 0.2s;
 }
 
 
 .indicadorAtivo {
   width: 45px;
-
   border-radius: 50px;
-
   opacity: 1;
 }

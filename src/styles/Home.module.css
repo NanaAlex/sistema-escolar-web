@@ -69,16 +69,14 @@
   border-radius: 25px;
   width: 23%;
   margin-left: 1%;
-  
-  /* 1. Transforma o pai em Flexbox */
   display: flex;
-  align-items: center;    /* Centraliza na vertical */
-  justify-content: center; /* Centraliza na horizontal */
+  align-items: center;   
+  justify-content: center;
 }
 
-/* TEXTO */
+
 .dataTexto {
   font-family: 'Hind', sans-serif;
   font-size: 20px;
-  margin: 0; /* Garante que margens padrões de <p> ou <h1> não desalinhem o texto */
+  margin: 0; 
 }
