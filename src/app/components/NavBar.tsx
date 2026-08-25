@@ -1,24 +1,49 @@
 'use client';
 
-import { useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+
 import styles from '../../styles/NavBar.module.css';
-import { Bell, House, DoorClosed, List, ScrollText, Cog, LogOut } from 'lucide-react';
+
+import {
+  Bell,
+  House,
+  DoorClosed,
+  List,
+  ScrollText,
+  Cog,
+  LogOut
+} from 'lucide-react';
 
 export default function NavBar() {
-  const [itemSelecionado, setItemSelecionado] = useState('inicio');
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const estaSelecionado = (rota: string) => {
+    if (rota === '/') {
+      return pathname === '/';
+    }
+
+    return pathname.startsWith(rota);
+  };
 
   return (
     <div className={styles.container}>
+
       <div className={styles.barraSuperior}>
 
         <div
           className={`${styles.itemBarraLateral} ${
-            itemSelecionado === 'notificacoes' ? styles.itemSelecionado : ''
+            estaSelecionado('/notificacoes')
+              ? styles.itemSelecionado
+              : ''
           }`}
-          onClick={() => setItemSelecionado('notificacoes')}
+          onClick={() => router.push('/notificacoes')}
         >
           <div className={styles.iconeItemBarraLateral}>
-            <Bell size={42} strokeWidth={2} />
+            <Bell
+              size={42}
+              strokeWidth={2}
+            />
           </div>
 
           <div className={styles.nomeItemBarraLateral}>
@@ -29,12 +54,17 @@ export default function NavBar() {
 
         <div
           className={`${styles.itemBarraLateral} ${
-            itemSelecionado === 'inicio' ? styles.itemSelecionado : ''
+            estaSelecionado('/')
+              ? styles.itemSelecionado
+              : ''
           }`}
-          onClick={() => setItemSelecionado('inicio')}
+          onClick={() => router.push('/')}
         >
           <div className={styles.iconeItemBarraLateral}>
-            <House size={42} strokeWidth={2} />
+            <House
+              size={42}
+              strokeWidth={2}
+            />
           </div>
 
           <div className={styles.nomeItemBarraLateral}>
@@ -45,12 +75,17 @@ export default function NavBar() {
 
         <div
           className={`${styles.itemBarraLateral} ${
-            itemSelecionado === 'turmas' ? styles.itemSelecionado : ''
+            estaSelecionado('/turmas')
+              ? styles.itemSelecionado
+              : ''
           }`}
-          onClick={() => setItemSelecionado('turmas')}
+          onClick={() => router.push('/turmas')}
         >
           <div className={styles.iconeItemBarraLateral}>
-            <DoorClosed size={42} strokeWidth={2} />
+            <DoorClosed
+              size={42}
+              strokeWidth={2}
+            />
           </div>
 
           <div className={styles.nomeItemBarraLateral}>
@@ -61,12 +96,17 @@ export default function NavBar() {
 
         <div
           className={`${styles.itemBarraLateral} ${
-            itemSelecionado === 'chamada' ? styles.itemSelecionado : ''
+            estaSelecionado('/chamada')
+              ? styles.itemSelecionado
+              : ''
           }`}
-          onClick={() => setItemSelecionado('chamada')}
+          onClick={() => router.push('/chamada')}
         >
           <div className={styles.iconeItemBarraLateral}>
-            <List size={42} strokeWidth={2} />
+            <List
+              size={42}
+              strokeWidth={2}
+            />
           </div>
 
           <div className={styles.nomeItemBarraLateral}>
@@ -77,12 +117,17 @@ export default function NavBar() {
 
         <div
           className={`${styles.itemBarraLateral} ${
-            itemSelecionado === 'documentos' ? styles.itemSelecionado : ''
+            estaSelecionado('/documentos')
+              ? styles.itemSelecionado
+              : ''
           }`}
-          onClick={() => setItemSelecionado('documentos')}
+          onClick={() => router.push('/documentos')}
         >
           <div className={styles.iconeItemBarraLateral}>
-            <ScrollText size={42} strokeWidth={2} />
+            <ScrollText
+              size={42}
+              strokeWidth={2}
+            />
           </div>
 
           <div className={styles.nomeItemBarraLateral}>
@@ -90,43 +135,49 @@ export default function NavBar() {
           </div>
         </div>
 
+      </div>
+
+
+      <div className={styles.barraInferior}>
+
+        <div
+          className={`${styles.itemBarraLateral} ${
+            estaSelecionado('/configuracoes')
+              ? styles.itemSelecionado
+              : ''
+          }`}
+          onClick={() => router.push('/configuracoes')}
+        >
+          <div className={styles.iconeItemBarraLateral}>
+            <Cog
+              size={42}
+              strokeWidth={2}
+            />
+          </div>
+
+          <div className={styles.nomeItemBarraLateral}>
+            <span>Configurações</span>
+          </div>
+        </div>
+
+
+        <div
+          className={`${styles.itemBarraLateral} ${styles.itemSair}`}
+        >
+          <div className={styles.iconeItemBarraLateral}>
+            <LogOut
+              size={42}
+              strokeWidth={2}
+            />
+          </div>
+
+          <div className={styles.nomeItemBarraLateral}>
+            <span>Sair</span>
+          </div>
+        </div>
+
+      </div>
+
     </div>
-
-    <div className={styles.barraInferior}>
-
-    <div
-        className={`${styles.itemBarraLateral} ${
-        itemSelecionado === 'configuracoes'
-            ? styles.itemSelecionado
-            : ''
-        }`}
-        onClick={() => setItemSelecionado('configuracoes')}
-    >
-        <div className={styles.iconeItemBarraLateral}>
-        <Cog
-            size={42} strokeWidth={2}
-        />
-        </div>
-
-        <div className={styles.nomeItemBarraLateral}>
-        <span>Configurações</span>
-        </div>
-    </div>
-
-
-    <div className={`${styles.itemBarraLateral} ${styles.itemSair}`}>
-        <div className={styles.iconeItemBarraLateral}>
-        <LogOut
-            size={42} strokeWidth={2}
-        />
-        </div>
-
-        <div className={styles.nomeItemBarraLateral}>
-        <span>Sair</span>
-        </div>
-    </div>
-
-    </div>
-        </div>
   );
 }
