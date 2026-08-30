@@ -1,15 +1,11 @@
 .container{
   width: 100%;
   height: 10vh;
-
-  background-color: #E83828;
-
+  background-color: #CF263C;
   border-bottom-right-radius: 25px;
-
   display: flex;
   align-items: center;
   padding: 0 20px;;
-
   justify-content: center;
 }
 
@@ -21,6 +17,7 @@
     color:white;
     font-size: 64px;
     font-weight: 700;
+    font-family: Line Seed JP;
 }
 
 .perfilHeader{

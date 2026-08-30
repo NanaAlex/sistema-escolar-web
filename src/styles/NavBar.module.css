@@ -49,12 +49,13 @@
 }
 
 
-.iconeItemBarraLateral {
-  margin-left: 22px;
-  display: flex;
-  align-items: center;
+.iconeMenu {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    display: block;
+    margin-left: 15px;
 }
-
 
 .nomeItemBarraLateral {
   margin-left: 22px;
