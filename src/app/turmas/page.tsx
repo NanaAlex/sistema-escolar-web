@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'   // ⬅️ import adicionado
 
 import styles from '../../styles/ListagemDeTurmas.module.css'
 
@@ -21,22 +22,23 @@ interface Turma {
 }
 
 const turmas: Turma[] = [
-  { id: 1, serie: '1º', turma: 'A', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#E53935', imagem: '/images/turmas/turma-1a.jpg' },
-  { id: 2, serie: '1º', turma: 'B', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#F57C00', imagem: '/images/turmas/turma-1b.jpg' },
-  { id: 3, serie: '1º', turma: 'C', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#FBC02D', imagem: '/images/turmas/turma-1c.jpg' },
-  { id: 4, serie: '2º', turma: 'A', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#7CB342', imagem: '/images/turmas/turma-2a.jpg' },
-  { id: 5, serie: '2º', turma: 'B', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#00897B', imagem: '/images/turmas/turma-2b.jpg' },
-  { id: 6, serie: '2º', turma: 'C', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#1E88E5', imagem: '/images/turmas/turma-2c.jpg' },
-  { id: 7, serie: '1º', turma: 'A', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#E53935', imagem: '/images/turmas/turma-1a.jpg' },
-  { id: 8, serie: '1º', turma: 'B', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#F57C00', imagem: '/images/turmas/turma-1b.jpg' },
-  { id: 9, serie: '1º', turma: 'C', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#FBC02D', imagem: '/images/turmas/turma-1c.jpg' },
-  { id: 10, serie: '2º', turma: 'A', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#7CB342', imagem: '/images/turmas/turma-2a.jpg' },
-  { id: 11, serie: '2º', turma: 'B', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#00897B', imagem: '/images/turmas/turma-2b.jpg' },
-  { id: 12, serie: '2º', turma: 'C', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#1E88E5', imagem: '/images/turmas/turma-2c.jpg' },
+  { id: 1, serie: '1º', turma: 'A', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#E53935', imagem: '/images/imgTurma.png' },
+  { id: 2, serie: '1º', turma: 'B', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#F57C00', imagem: '/images/imgTurma.png' },
+  { id: 3, serie: '1º', turma: 'C', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#FBC02D', imagem: '/images/imgTurma.png' },
+  { id: 4, serie: '2º', turma: 'A', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#7CB342', imagem: '/images/imgTurma.png' },
+  { id: 5, serie: '2º', turma: 'B', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#00897B', imagem: '/images/imgTurma.png' },
+  { id: 6, serie: '2º', turma: 'C', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#1E88E5', imagem: '/images/imgTurma.png' },
+  { id: 7, serie: '1º', turma: 'A', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#E53935', imagem: '/images/imgTurma.png' },
+  { id: 8, serie: '1º', turma: 'B', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#F57C00', imagem: '/images/imgTurma.png' },
+  { id: 9, serie: '1º', turma: 'C', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#FBC02D', imagem: '/images/imgTurma.png' },
+  { id: 10, serie: '2º', turma: 'A', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#7CB342', imagem: '/images/imgTurma.png' },
+  { id: 11, serie: '2º', turma: 'B', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#00897B', imagem: '/images/imgTurma.png' },
+  { id: 12, serie: '2º', turma: 'C', periodo: 'MATUTINO', tipo: 'ENSINO MÉDIO', media: 86.5, alunos: 30, cor: '#1E88E5', imagem: '/images/imgTurma.png' },
 ]
 
 export default function listagemDeTurmas(){
     const [turmasDoDiaAtivo, setTurmasDoDiaAtivo] = useState(false)
+    const router = useRouter()   // ⬅️ hook adicionado
 
     return(
         <main className={styles.listagemDeTurmas}>
@@ -122,8 +124,12 @@ export default function listagemDeTurmas(){
                                                 {turma.alunos} alunos
                                             </span>
 
-                                            <button type="button" className={styles.botaoDetalhes}>
-                                                MAIS DETALHES +
+                                            <button
+                                                type="button"
+                                                className={styles.botaoDetalhes}
+                                                onClick={() => router.push(`/turmas/${turma.id}`)}
+                                            >
+                                                MAIS DETALHES ➝
                                             </button>
                                         </div>
                                     </div>
