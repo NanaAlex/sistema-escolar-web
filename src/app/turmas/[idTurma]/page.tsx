@@ -225,7 +225,7 @@ export default function DetalhesDaTurma({
   }
 
   function handleFazerChamada() {
-    console.log('Fazer chamada da turma:', turma!.id)
+    router.push(`/turmas/${turma!.id}/chamada`)
   }
 
   function handleLancarNotas() {
